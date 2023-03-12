@@ -9,7 +9,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=st2aprProject
     volumes: 
-          - ./src/main/sql/init.sql:/docker-entrypoint-initdb.d
+          - ./src/main/sql/:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin
