@@ -1,5 +1,8 @@
 package com.st2apr.project.st2aprproject.controller;
 
+import com.st2apr.project.st2aprproject.model.InternEntity;
+import com.st2apr.project.st2aprproject.model.InternSB;
+import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,11 +12,14 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Collections;
 
 @WebServlet(name = "AccueilServlet", value = "/")
 public class AccueilServlet extends HttpServlet {
 
+    @EJB
+    InternSB isb;
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("doGet AccueilServlet");
 
@@ -43,6 +49,18 @@ public class AccueilServlet extends HttpServlet {
             request.setAttribute("username", usernameAttributeFromSession);
             request.setAttribute("firstName", firstNameAttributeFromSession);
             request.setAttribute("lastName", lastNameAttributeFromSession);
+
+            ArrayList<InternEntity> interns = new ArrayList<>(isb.getAllInternFromATutor(usernameAttributeFromSession));
+
+            if (interns.size() > 0) {
+                for (int i = 0 ; i < interns.size() ; i++) {
+                    System.out.println(interns.get(i).getNom());
+                }
+                String test = interns.get(0).getNom();
+                request.setAttribute("test", test);
+            }
+            request.setAttribute("interns", interns);
+
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
 
