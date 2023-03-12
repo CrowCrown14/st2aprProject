@@ -12,3 +12,6 @@ To launch the project, type the command :
 docker compose up
 ```
 
+## En cas de probleme
+
+Le depot dispose d'un fichier initV2.sql dans le cas ca ne marche pas
