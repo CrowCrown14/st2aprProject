@@ -21,6 +21,13 @@ public class InternSB {
         return q.getResultList();
     }
 
+    public List<InternEntity> getSpecificInternFromTutor(String username, String internId) {
+        Query q = em.createNativeQuery("SELECT * FROM `Intern` WHERE tutorUsername = ? and internId = ?", InternEntity.class)
+                .setParameter(1, username)
+                .setParameter(2, Integer.parseInt(internId));
+        return q.getResultList();
+    }
+
     public void deleteIntern(String internId) {
         em.getTransaction().begin();
         Query q = em.createNativeQuery("DELETE FROM `Intern` WHERE internId = ?")

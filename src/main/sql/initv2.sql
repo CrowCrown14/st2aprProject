@@ -57,11 +57,11 @@ CREATE TABLE `Intern` (
 --
 
 INSERT INTO `Intern` (`internId`, `nom`, `prenom`, `groupe`, `cdc`, `ficheVisite`, `ficheEvalEntreprise`, `sondageWeb`, `rapportRendu`, `soutenance`, `planifier`, `faite`, `debut`, `fin`, `entreprise`, `mdS`, `adresse`, `noteTechnique`, `noteCommunication`, `descriptionMission`, `commentaire`, `tutorUsername`) VALUES
-(1, 'Alex', 'Xu', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
-(2, 'Alex', 'Picard', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
-(3, 'Koel', 'Theo', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
-(4, 'Yoann', 'Losco', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
-(5, 'Maxime', 'Fotso', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test');
+(1, 'Xu', 'Alex', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
+(2, 'Picard', 'Alex', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
+(3, 'Theo', 'Koel', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
+(4, 'Losco', 'Yoann', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test'),
+(5, 'Fotso', 'Maxime', 'M2', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test');
 
 -- --------------------------------------------------------
 

@@ -7,11 +7,12 @@
 
 
         out.println("<table>");
-        out.println("<form name='deleteForm' action='deleteIntern' method='POST'>");
+        out.println("<form name='deleteForm' action='updateIntern' method='POST'>");
         out.println("<thead>");
         out.println("<th> Select </th>");
         out.println("<th> Gr </th>");
         out.println("<th> NOM </th>");
+        out.println("<th> PRENOM </th>");
         out.println("<th> CdC </th>");
         out.println("<th> FICHE VISITE </th>");
         out.println("<th> FICHE EVAL ENTR </th>");
@@ -39,6 +40,9 @@
                 out.println("</td>");
                 out.println("<td>");
                 out.println(interns.get(i).getNom());
+                out.println("</td>");
+                out.println("<td>");
+                out.println(interns.get(i).getPrenom());
                 out.println("</td>");
                 out.println("<td>");
                 if (interns.get(i).isCdc())
