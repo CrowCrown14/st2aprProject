@@ -5,8 +5,8 @@
              version="3.0">
     <persistence-unit name="default">
 
-        <class>com.st2apr.project.st2aprproject.model.TutorEntity</class>
-        <class>com.st2apr.project.st2aprproject.model.InternEntity</class>
+        <class>com.st2apr.project.st2aprproject.model.tutor.TutorEntity</class>
+        <class>com.st2apr.project.st2aprproject.model.intern.InternEntity</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/st2aprProject"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

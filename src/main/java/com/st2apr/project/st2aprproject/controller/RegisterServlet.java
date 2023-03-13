@@ -1,7 +1,7 @@
 package com.st2apr.project.st2aprproject.controller;
 
-import com.st2apr.project.st2aprproject.model.TutorEntity;
-import com.st2apr.project.st2aprproject.model.TutorSB;
+import com.st2apr.project.st2aprproject.model.tutor.TutorEntity;
+import com.st2apr.project.st2aprproject.model.tutor.TutorSB;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -33,10 +33,10 @@ public class RegisterServlet extends HttpServlet {
         }
 
         if (usernameAttributeFromSession.equals("")) {
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.getRequestDispatcher("src/register.jsp").forward(request, response);
         }
         else {
-            request.getRequestDispatcher("index.jsp").forward(request,response);
+            response.sendRedirect(request.getContextPath() + "/");
         }
     }
 

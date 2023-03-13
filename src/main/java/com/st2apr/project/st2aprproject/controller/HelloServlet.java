@@ -3,8 +3,8 @@ package com.st2apr.project.st2aprproject.controller;
 import java.io.*;
 import java.util.List;
 
-import com.st2apr.project.st2aprproject.model.TutorEntity;
-import com.st2apr.project.st2aprproject.model.TutorSB;
+import com.st2apr.project.st2aprproject.model.tutor.TutorEntity;
+import com.st2apr.project.st2aprproject.model.tutor.TutorSB;
 import jakarta.ejb.EJB;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

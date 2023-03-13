@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<jsp:include page="header.jsp" />
+<jsp:include page="header/header.jsp" />
 <body>
-<div class="formulaire">
+<div class="mainDiv">
 <h1>Register</h1>
 
-${ messageError }
+<p class="error">${ messageError }</p>
 <form name ='myForm' action='register' method="post">
     <label>Username : <input type='text' name='loginField' id="idLoginField" required="required"></label><br/>
     <label>Password : <input type='password' name='pwdField' id="idPwdField" required="required"></label> <br/>

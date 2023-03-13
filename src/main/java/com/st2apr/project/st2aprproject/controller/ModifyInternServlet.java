@@ -1,6 +1,6 @@
 package com.st2apr.project.st2aprproject.controller;
 
-import com.st2apr.project.st2aprproject.model.InternSB;
+import com.st2apr.project.st2aprproject.model.intern.InternSB;
 import jakarta.ejb.EJB;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "DeleteInternServlet", value = "/deleteIntern")
-public class DeleteInternServlet extends HttpServlet {
+public class ModifyInternServlet extends HttpServlet {
 
     @EJB
     InternSB isb;
@@ -19,8 +19,13 @@ public class DeleteInternServlet extends HttpServlet {
 
         String[] checkedInterns = request.getParameterValues("selectedInterns");
 
-        for (String intern : checkedInterns) {
-            isb.deleteIntern(intern);
+        System.out.println(request.getParameter("formAction"));
+
+        if (checkedInterns != null) {
+
+            for (String intern : checkedInterns) {
+                isb.deleteIntern(intern);
+            }
         }
 
         response.sendRedirect(request.getContextPath() + "/");

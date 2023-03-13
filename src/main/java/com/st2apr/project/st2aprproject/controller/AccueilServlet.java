@@ -1,7 +1,7 @@
 package com.st2apr.project.st2aprproject.controller;
 
-import com.st2apr.project.st2aprproject.model.InternEntity;
-import com.st2apr.project.st2aprproject.model.InternSB;
+import com.st2apr.project.st2aprproject.model.intern.InternEntity;
+import com.st2apr.project.st2aprproject.model.intern.InternSB;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -56,12 +56,10 @@ public class AccueilServlet extends HttpServlet {
                 for (int i = 0 ; i < interns.size() ; i++) {
                     System.out.println(interns.get(i).getNom());
                 }
-                String test = interns.get(0).getNom();
-                request.setAttribute("test", test);
             }
             request.setAttribute("interns", interns);
 
-            request.getRequestDispatcher("index.jsp").forward(request,response);
+            request.getRequestDispatcher("src/index.jsp").forward(request,response);
         }
 
     }

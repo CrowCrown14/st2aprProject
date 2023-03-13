@@ -1,5 +1,6 @@
-package com.st2apr.project.st2aprproject.model;
+package com.st2apr.project.st2aprproject.model.tutor;
 
+import com.st2apr.project.st2aprproject.model.tutor.TutorEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

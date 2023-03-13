@@ -1,4 +1,4 @@
-package com.st2apr.project.st2aprproject.model;
+package com.st2apr.project.st2aprproject.model.intern;
 
 import jakarta.persistence.*;
 
