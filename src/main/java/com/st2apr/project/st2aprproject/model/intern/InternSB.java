@@ -1,6 +1,5 @@
 package com.st2apr.project.st2aprproject.model.intern;
 
-import com.st2apr.project.st2aprproject.model.intern.InternEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
