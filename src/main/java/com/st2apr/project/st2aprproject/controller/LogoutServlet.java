@@ -32,10 +32,6 @@ public class LogoutServlet extends HttpServlet {
             }
         }
 
-        System.out.println(session.getAttribute("username"));
-        System.out.println(session.getAttribute("firstName"));
-        System.out.println(session.getAttribute("lastName"));
-
         response.sendRedirect(request.getContextPath() + "/");
     }
 }

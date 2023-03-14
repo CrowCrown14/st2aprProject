@@ -10,7 +10,7 @@
                 ArrayList<InternEntity> interns = (ArrayList<InternEntity>) request.getAttribute("interns");
 
                 out.println("<table>");
-                out.println("<form name='deleteForm' action='updateIntern' method='POST'>");
+                out.println("<form name='updateIntern' action='updateIntern' method='POST'>");
                 out.println("<thead>");
                 out.println("<th> Gr </th>");
                 out.println("<th> NOM </th>");

@@ -52,11 +52,6 @@ public class AccueilServlet extends HttpServlet {
 
             ArrayList<InternEntity> interns = new ArrayList<>(isb.getAllInternFromATutor(usernameAttributeFromSession));
 
-            if (interns.size() > 0) {
-                for (int i = 0 ; i < interns.size() ; i++) {
-                    System.out.println(interns.get(i).getNom());
-                }
-            }
             request.setAttribute("interns", interns);
 
             request.getRequestDispatcher("src/index.jsp").forward(request,response);
