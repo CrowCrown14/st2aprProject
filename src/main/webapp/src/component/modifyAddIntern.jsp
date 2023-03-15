@@ -149,8 +149,6 @@
 
                                 out.println("</td>");
                         out.println("</tr>");
-//                        out.println("<tr>");
-//                        out.println("</tr>");
                 }
                 out.println("<tr>");
                 out.println("</tr>");

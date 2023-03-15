@@ -7,6 +7,9 @@
 
 
         out.println("<table>");
+
+    if (interns.size() > 0) {
+
         out.println("<form name='deleteForm' action='updateIntern' method='POST'>");
         out.println("<thead>");
         out.println("<th> Select </th>");
@@ -30,117 +33,116 @@
         out.println("<th> NOTE COM </th>");
         out.println("</thead>");
         out.println("<tbody>");
-        for (int i = 0 ; i < interns.size() ; i++) {
-            out.println("<tr>");
-                out.println("<td>");
-                out.println("<input type=\"checkbox\" id=\"intern" +  interns.get(i).getInternId() +"\" name=\"selectedInterns\" value=\""+ interns.get(i).getInternId() +"\">");
-                out.println("</td>");
-                out.println("<td>");
-                out.println(interns.get(i).getGroupe());
-                out.println("</td>");
-                out.println("<td>");
-                out.println(interns.get(i).getNom());
-                out.println("</td>");
-                out.println("<td>");
-                out.println(interns.get(i).getPrenom());
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isCdc())
-                    out.println("OUI");
-                else
-                   out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isFicheVisite())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isFicheEvalEntreprise())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isSondageWeb())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isRapportRendu())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isSoutenance())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isPlanifier())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).isFaite())
-                    out.println("OUI");
-                else
-                    out.println("NON");
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getDebut() != null)
-                    out.println(interns.get(i).getDebut());
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getFin() != null)
-                    out.println(interns.get(i).getFin());
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getEntreprise() != null)
-                    out.println(interns.get(i).getEntreprise());
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getMdS() != null)
-                    out.println(interns.get(i).getMdS());
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getAdresse() != null)
-                    out.println(interns.get(i).getAdresse());
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getNoteTechnique() != null) {
-                    if (interns.get(i).getNoteTechnique() != -9999) {
-                        out.println(interns.get(i).getNoteTechnique());
-                    }
-                }
-                out.println("</td>");
-                out.println("<td>");
-                if (interns.get(i).getNoteCommunication() != null) {
-                    if (interns.get(i).getNoteCommunication() != -9999)
-                        out.println(interns.get(i).getNoteCommunication());
-                }
-
-                out.println("</td>");
-            out.println("</tr>");
-        }
-
-        if (interns.size() > 0) {
+        for (int i = 0; i < interns.size(); i++) {
             out.println("<tr>");
             out.println("<td>");
-            out.println("<input type='submit' name='formAction' value='Modify'>");
+            out.println("<input type=\"checkbox\" id=\"intern" + interns.get(i).getInternId() + "\" name=\"selectedInterns\" value=\"" + interns.get(i).getInternId() + "\">");
             out.println("</td>");
             out.println("<td>");
-            out.println("<input type='submit' name='formAction' value='Delete'>");
+            out.println(interns.get(i).getGroupe());
+            out.println("</td>");
+            out.println("<td>");
+            out.println(interns.get(i).getNom());
+            out.println("</td>");
+            out.println("<td>");
+            out.println(interns.get(i).getPrenom());
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isCdc())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isFicheVisite())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isFicheEvalEntreprise())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isSondageWeb())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isRapportRendu())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isSoutenance())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isPlanifier())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).isFaite())
+                out.println("OUI");
+            else
+                out.println("NON");
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getDebut() != null)
+                out.println(interns.get(i).getDebut());
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getFin() != null)
+                out.println(interns.get(i).getFin());
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getEntreprise() != null)
+                out.println(interns.get(i).getEntreprise());
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getMdS() != null)
+                out.println(interns.get(i).getMdS());
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getAdresse() != null)
+                out.println(interns.get(i).getAdresse());
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getNoteTechnique() != null) {
+                if (interns.get(i).getNoteTechnique() != -9999) {
+                    out.println(interns.get(i).getNoteTechnique());
+                }
+            }
+            out.println("</td>");
+            out.println("<td>");
+            if (interns.get(i).getNoteCommunication() != null) {
+                if (interns.get(i).getNoteCommunication() != -9999)
+                    out.println(interns.get(i).getNoteCommunication());
+            }
+
             out.println("</td>");
             out.println("</tr>");
         }
+
+        out.println("<tr>");
+        out.println("<td>");
+        out.println("<input type='submit' name='formAction' value='Modify'>");
+        out.println("</td>");
+        out.println("<td>");
+        out.println("<input type='submit' name='formAction' value='Delete'>");
+        out.println("</td>");
+        out.println("</tr>");
         out.println("</tbody>");
         out.println("</form>");
+    }
         out.println("<thead>");
         out.println("<th> Select </th>");
         out.println("<th> Gr </th>");

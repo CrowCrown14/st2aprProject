@@ -27,6 +27,9 @@ public class InternEntity {
     @Column(name = "ficheVisite", nullable = false)
     private boolean ficheVisite;
     @Basic
+    @Column(name = "ficheEvalEntreprise", nullable = false)
+    private boolean ficheEvalEntreprise;
+    @Basic
     @Column(name = "sondageWeb", nullable = false)
     private boolean sondageWeb;
     @Basic
@@ -71,9 +74,6 @@ public class InternEntity {
     @Basic
     @Column(name = "tutorUsername", nullable = false, length = 50)
     private String tutorUsername;
-    @Basic
-    @Column(name = "ficheEvalEntreprise", nullable = false)
-    private boolean ficheEvalEntreprise;
 
     public int getInternId() {
         return internId;
@@ -121,6 +121,14 @@ public class InternEntity {
 
     public void setFicheVisite(boolean ficheVisite) {
         this.ficheVisite = ficheVisite;
+    }
+
+    public boolean isFicheEvalEntreprise() {
+        return ficheEvalEntreprise;
+    }
+
+    public void setFicheEvalEntreprise(boolean ficheEvalEntreprise) {
+        this.ficheEvalEntreprise = ficheEvalEntreprise;
     }
 
     public boolean isSondageWeb() {
@@ -248,32 +256,33 @@ public class InternEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        InternEntity that = (InternEntity) o;
+        InternEntity intern = (InternEntity) o;
 
-        if (internId != that.internId) return false;
-        if (cdc != that.cdc) return false;
-        if (ficheVisite != that.ficheVisite) return false;
-        if (sondageWeb != that.sondageWeb) return false;
-        if (rapportRendu != that.rapportRendu) return false;
-        if (soutenance != that.soutenance) return false;
-        if (planifier != that.planifier) return false;
-        if (faite != that.faite) return false;
-        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
-        if (prenom != null ? !prenom.equals(that.prenom) : that.prenom != null) return false;
-        if (groupe != null ? !groupe.equals(that.groupe) : that.groupe != null) return false;
-        if (debut != null ? !debut.equals(that.debut) : that.debut != null) return false;
-        if (fin != null ? !fin.equals(that.fin) : that.fin != null) return false;
-        if (entreprise != null ? !entreprise.equals(that.entreprise) : that.entreprise != null) return false;
-        if (mdS != null ? !mdS.equals(that.mdS) : that.mdS != null) return false;
-        if (adresse != null ? !adresse.equals(that.adresse) : that.adresse != null) return false;
-        if (noteTechnique != null ? !noteTechnique.equals(that.noteTechnique) : that.noteTechnique != null)
+        if (internId != intern.internId) return false;
+        if (cdc != intern.cdc) return false;
+        if (ficheVisite != intern.ficheVisite) return false;
+        if (ficheEvalEntreprise != intern.ficheEvalEntreprise) return false;
+        if (sondageWeb != intern.sondageWeb) return false;
+        if (rapportRendu != intern.rapportRendu) return false;
+        if (soutenance != intern.soutenance) return false;
+        if (planifier != intern.planifier) return false;
+        if (faite != intern.faite) return false;
+        if (nom != null ? !nom.equals(intern.nom) : intern.nom != null) return false;
+        if (prenom != null ? !prenom.equals(intern.prenom) : intern.prenom != null) return false;
+        if (groupe != null ? !groupe.equals(intern.groupe) : intern.groupe != null) return false;
+        if (debut != null ? !debut.equals(intern.debut) : intern.debut != null) return false;
+        if (fin != null ? !fin.equals(intern.fin) : intern.fin != null) return false;
+        if (entreprise != null ? !entreprise.equals(intern.entreprise) : intern.entreprise != null) return false;
+        if (mdS != null ? !mdS.equals(intern.mdS) : intern.mdS != null) return false;
+        if (adresse != null ? !adresse.equals(intern.adresse) : intern.adresse != null) return false;
+        if (noteTechnique != null ? !noteTechnique.equals(intern.noteTechnique) : intern.noteTechnique != null)
             return false;
-        if (noteCommunication != null ? !noteCommunication.equals(that.noteCommunication) : that.noteCommunication != null)
+        if (noteCommunication != null ? !noteCommunication.equals(intern.noteCommunication) : intern.noteCommunication != null)
             return false;
-        if (descriptionMission != null ? !descriptionMission.equals(that.descriptionMission) : that.descriptionMission != null)
+        if (descriptionMission != null ? !descriptionMission.equals(intern.descriptionMission) : intern.descriptionMission != null)
             return false;
-        if (commentaire != null ? !commentaire.equals(that.commentaire) : that.commentaire != null) return false;
-        if (tutorUsername != null ? !tutorUsername.equals(that.tutorUsername) : that.tutorUsername != null)
+        if (commentaire != null ? !commentaire.equals(intern.commentaire) : intern.commentaire != null) return false;
+        if (tutorUsername != null ? !tutorUsername.equals(intern.tutorUsername) : intern.tutorUsername != null)
             return false;
 
         return true;
@@ -287,6 +296,7 @@ public class InternEntity {
         result = 31 * result + (groupe != null ? groupe.hashCode() : 0);
         result = 31 * result + (cdc ? 1 : 0);
         result = 31 * result + (ficheVisite ? 1 : 0);
+        result = 31 * result + (ficheEvalEntreprise ? 1 : 0);
         result = 31 * result + (sondageWeb ? 1 : 0);
         result = 31 * result + (rapportRendu ? 1 : 0);
         result = 31 * result + (soutenance ? 1 : 0);
@@ -303,13 +313,5 @@ public class InternEntity {
         result = 31 * result + (commentaire != null ? commentaire.hashCode() : 0);
         result = 31 * result + (tutorUsername != null ? tutorUsername.hashCode() : 0);
         return result;
-    }
-
-    public boolean isFicheEvalEntreprise() {
-        return ficheEvalEntreprise;
-    }
-
-    public void setFicheEvalEntreprise(boolean ficheEvalEntreprise) {
-        this.ficheEvalEntreprise = ficheEvalEntreprise;
     }
 }
