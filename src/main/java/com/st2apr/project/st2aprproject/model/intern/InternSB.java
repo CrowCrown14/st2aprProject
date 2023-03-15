@@ -6,7 +6,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -44,48 +43,10 @@ public class InternSB {
         em.getTransaction().commit();
     }
 
-    public void insertOrUpdateIntern(InternEntity internEntity) {
-
-        Query q = em.createQuery("SELECT max(e.internId) from InternEntity e");
-        List<Integer> qIntegers = q.getResultList();
-
-        int newId = 0;
-
-        for (int integer : qIntegers) {
-            newId = integer + 1;
-        }
-
-        internEntity.setInternId(newId);
+    public void updateIntern(InternEntity internEntity) {
 
         em.getTransaction().begin();
-//        Query q = em.createNativeQuery("UPDATE `Intern` SET groupe = ?, nom = ?, prenom = ?, cdc = ?, ficheVisite = ?, ficheEvalEntreprise = ?, sondageWeb = ?, rapportRendu = ?, soutenance = ?, planifier = ?, faite = ?, debut = ?, fin  = ?, entreprise = ?,mdS = ?, adresse = ?, noteTechnique = ?, noteCommunication = ? WHERE  internId = ?")
-//                .setParameter(1, internEntity.getGroupe())
-//                .setParameter(2, internEntity.getNom())
-//                .setParameter(3, internEntity.getPrenom())
-//                .setParameter(4,(internEntity.isCdc()) ? 1 : 0)
-//                .setParameter(5,(internEntity.isFicheVisite()) ? 1 : 0)
-//                .setParameter(6,(internEntity.isFicheEvalEntreprise()) ? 1 : 0)
-//                .setParameter(7,(internEntity.isSondageWeb()) ? 1 : 0)
-//                .setParameter(8,(internEntity.isRapportRendu()) ? 1 : 0)
-//                .setParameter(9,(internEntity.isSoutenance()) ? 1 : 0)
-//                .setParameter(10,(internEntity.isPlanifier()) ? 1 : 0)
-//                .setParameter(11,(internEntity.isFaite()) ? 1 : 0)
-//                .setParameter(12,internEntity.getDebut())
-//                .setParameter(13,internEntity.getFin())
-//                .setParameter(14,internEntity.getEntreprise())
-//                .setParameter(15,internEntity.getMdS())
-//                .setParameter(16,internEntity.getAdresse())
-//                .setParameter(17,(internEntity.getNoteTechnique() == -9999) ? null : internEntity.getNoteTechnique())
-//                .setParameter(18,(internEntity.getNoteCommunication() == -9999) ? null : internEntity.getNoteCommunication())
-//                .setParameter(19,internEntity.getInternId());
-//        q.executeUpdate();
-        em.persist(internEntity);
-        em.getTransaction().commit();
-    }
-
-    public void insertIntern(InternEntity internEntity) {
-
-        Query q = em.createNativeQuery("INSERT INTO `Intern`(groupe,nom,prenom,cdc,ficheVisite,ficheEvalEntreprise, sondageWeb, rapportRendu, soutenance, planifier, faite, debut, fin, entreprise,mdS, adresse, noteTechnique, noteCommunication) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")
+        Query q = em.createNativeQuery("UPDATE `Intern` SET groupe = ?, nom = ?, prenom = ?, cdc = ?, ficheVisite = ?, ficheEvalEntreprise = ?, sondageWeb = ?, rapportRendu = ?, soutenance = ?, planifier = ?, faite = ?, debut = ?, fin  = ?, entreprise = ?,mdS = ?, adresse = ?, noteTechnique = ?, noteCommunication = ? WHERE  internId = ?")
                 .setParameter(1, internEntity.getGroupe())
                 .setParameter(2, internEntity.getNom())
                 .setParameter(3, internEntity.getPrenom())
@@ -102,9 +63,53 @@ public class InternSB {
                 .setParameter(14,internEntity.getEntreprise())
                 .setParameter(15,internEntity.getMdS())
                 .setParameter(16,internEntity.getAdresse())
-                .setParameter(17,(internEntity.getNoteTechnique() == -9999) ? null : internEntity.getNoteTechnique())
-                .setParameter(18,(internEntity.getNoteCommunication() == -9999) ? null : internEntity.getNoteCommunication())
+                .setParameter(17,internEntity.getNoteTechnique())
+                .setParameter(18,internEntity.getNoteCommunication())
                 .setParameter(19,internEntity.getInternId());
+        q.executeUpdate();
+        em.getTransaction().commit();
+    }
 
+    private int getNewId() {
+        Query q = em.createQuery("SELECT max(e.internId) from InternEntity e");
+        List<Integer> qIntegers = q.getResultList();
+
+        int newId = 1;
+
+        for (int integer : qIntegers) {
+            newId = integer + 1;
+        }
+
+        return newId;
+    }
+    public void insertIntern(InternEntity internEntity) {
+
+        internEntity.setInternId(getNewId());
+
+        em.getTransaction().begin();
+
+        Query q = em.createNativeQuery("INSERT INTO `Intern`(`groupe`,`nom`,`prenom`,`cdc`,`ficheVisite`,`ficheEvalEntreprise`, `sondageWeb`, `rapportRendu`, `soutenance`, `planifier`, `faite`, `debut`, `fin`, `entreprise`,`mdS`, `adresse`, `noteTechnique`, `noteCommunication`, `internId`,`tutorUsername`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")
+                .setParameter(1, internEntity.getGroupe())
+                .setParameter(2, internEntity.getNom())
+                .setParameter(3, internEntity.getPrenom())
+                .setParameter(4,(internEntity.isCdc()) ? 1 : 0)
+                .setParameter(5,(internEntity.isFicheVisite()) ? 1 : 0)
+                .setParameter(6,(internEntity.isFicheEvalEntreprise()) ? 1 : 0)
+                .setParameter(7,(internEntity.isSondageWeb()) ? 1 : 0)
+                .setParameter(8,(internEntity.isRapportRendu()) ? 1 : 0)
+                .setParameter(9,(internEntity.isSoutenance()) ? 1 : 0)
+                .setParameter(10,(internEntity.isPlanifier()) ? 1 : 0)
+                .setParameter(11,(internEntity.isFaite()) ? 1 : 0)
+                .setParameter(12,internEntity.getDebut())
+                .setParameter(13,internEntity.getFin())
+                .setParameter(14,internEntity.getEntreprise())
+                .setParameter(15,internEntity.getMdS())
+                .setParameter(16,internEntity.getAdresse())
+                .setParameter(17,internEntity.getNoteTechnique())
+                .setParameter(18,internEntity.getNoteCommunication())
+                .setParameter(19,internEntity.getInternId())
+                .setParameter(20,internEntity.getTutorUsername());
+        q.executeUpdate();
+        em.getTransaction().commit();
     }
 }

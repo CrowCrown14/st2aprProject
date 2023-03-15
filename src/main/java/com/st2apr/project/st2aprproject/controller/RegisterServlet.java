@@ -65,7 +65,7 @@ public class RegisterServlet extends HttpServlet {
                 tutor.setPassword(pwdInputJSP);
                 tutor.setTutorFirstName(firstNameInputJSP);
                 tutor.setTutorLastName(lastNameInputJSP);
-                tsb.insertOrUpdateTutor(tutor);
+                tsb.insertTutor(tutor);
 
                 HttpSession session = request.getSession();
 

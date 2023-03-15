@@ -21,8 +21,15 @@ public class TutorSB {
         return q.getResultList();
     }
 
-    public void insertOrUpdateTutor(TutorEntity tutor) {
+    public void insertTutor(TutorEntity tutor) {
+        em.getTransaction().begin();
+        Query q = em.createNativeQuery("INSERT INTO `Tutor`(`username`, `password`, `tutorFirstName`, `tutorLastName`) VALUES (?,?,?,?) ")
+                .setParameter(1,tutor.getUsername())
+                .setParameter(2,tutor.getPassword())
+                .setParameter(3,tutor.getTutorFirstName())
+                .setParameter(4,tutor.getTutorLastName());
 
-        em.persist(tutor);
+        q.executeUpdate();
+        em.getTransaction().commit();
     }
 }

@@ -175,7 +175,7 @@ public class ModifyInternServlet extends HttpServlet {
         }
         if (request.getParameter("ModifyFromUpdate") != null) {
             //click button Add from modifyAddIntern
-            if (request.getParameter("ModifyFromUpdate").equals("Add")) {
+            if (request.getParameter("ModifyFromUpdate").equals("Modify")) {
 
                 Iterator<String> iterator = request.getParameterNames().asIterator();
 
@@ -306,7 +306,7 @@ public class ModifyInternServlet extends HttpServlet {
                 }
 
                 for (InternEntity intern : changedInterns) {
-                    isb.insertOrUpdateIntern(intern);
+                    isb.updateIntern(intern);
                 }
             }
 

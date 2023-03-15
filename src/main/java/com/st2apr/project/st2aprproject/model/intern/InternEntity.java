@@ -8,7 +8,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "`Intern`", schema = "st2aprProject", catalog = "")
 public class InternEntity {
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "internId", nullable = false)
     private int internId;
