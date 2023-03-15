@@ -2,7 +2,6 @@ package com.st2apr.project.st2aprproject.model.intern;
 
 import jakarta.persistence.*;
 
-import javax.annotation.Nullable;
 import java.sql.Date;
 
 @Entity
@@ -43,38 +42,30 @@ public class InternEntity {
     @Column(name = "faite", nullable = false)
     private boolean faite;
     @Basic
-    @Nullable
     @Column(name = "debut", nullable = true)
     private Date debut;
     @Basic
-    @Nullable
     @Column(name = "fin", nullable = true)
     private Date fin;
     @Basic
     @Column(name = "entreprise", nullable = true, length = 50)
-    @Nullable
     private String entreprise;
     @Basic
-    @Nullable
     @Column(name = "mdS", nullable = true, length = 50)
     private String mdS;
     @Basic
-    @Nullable
     @Column(name = "adresse", nullable = true, length = -1)
     private String adresse;
     @Basic
-    @Nullable
     @Column(name = "noteTechnique", nullable = true)
     private Integer noteTechnique;
     @Basic
-    @Nullable
     @Column(name = "noteCommunication", nullable = true)
     private Integer noteCommunication;
     @Basic
     @Column(name = "descriptionMission", nullable = true, length = -1)
     private String descriptionMission;
     @Basic
-    @Nullable
     @Column(name = "commentaire", nullable = true, length = -1)
     private String commentaire;
     @Basic
