@@ -4,7 +4,7 @@
 <html>
 <jsp:include page="../header/header.jsp"/>
 <body>
-<div class="mainDivLeft">
+<div class="mainDiv">
         <jsp:include page="../header/topPageWelcome.jsp"/>
         <%
                 ArrayList<InternEntity> interns = (ArrayList<InternEntity>) request.getAttribute("interns");
@@ -35,13 +35,13 @@
                 for (InternEntity intern : interns) {
                         out.println("<tr>");
                                 out.println("<td>");
-                                out.println("<input type='text' name='group" + intern.getInternId() + "' value='" + intern.getGroupe() +  "' required>");
+                                out.println("<input type='text' name='group" + intern.getInternId() + "' value='" + intern.getGroupe() +  "' size='2' required>");
                                 out.println("</td>");
                                 out.println("<td>");
-                                out.println("<input type='text' name='nom" + intern.getInternId() + "' value='" + intern.getNom() +  "' required>");
+                                out.println("<input type='text' name='nom" + intern.getInternId() + "' value='" + intern.getNom() +  "' size='5' required>");
                                 out.println("</td>");
                                 out.println("<td>");
-                                out.println("<input type='text' name='prenom" + intern.getInternId() + "' value='" + intern.getPrenom() +  "' required>");
+                                out.println("<input type='text' name='prenom" + intern.getInternId() + "' value='" + intern.getPrenom() +  "' size='5' required>");
                                 out.println("</td>");
                                 out.println("<td>");
                                 if (intern.isCdc())
@@ -107,45 +107,56 @@
                                 out.println("</td>");
                                 out.println("<td>");
                                 if (intern.getEntreprise() != null)
-                                        out.println("<input type='text' name='getEntreprise" + intern.getInternId() + "' value='" + intern.getEntreprise() +  "'>");
+                                        out.println("<input type='text' name='getEntreprise" + intern.getInternId() + "' value='" + intern.getEntreprise() +  "' size='5' >");
                                 else
-                                        out.println("<input type='text' name='getEntreprise" + intern.getInternId() + "' value=''>");
+                                        out.println("<input type='text' name='getEntreprise" + intern.getInternId() + "' value='' size='5'>");
 
                                 out.println("</td>");
                                 out.println("<td>");
                                 if (intern.getMdS() != null)
-                                        out.println("<input type='text' name='getMdS" + intern.getInternId() + "' value='" + intern.getMdS() +  "'>");
+                                        out.println("<input type='text' name='getMdS" + intern.getInternId() + "' value='" + intern.getMdS() +  "' size='5'>");
                                 else
-                                        out.println("<input type='text' name='getMdS" + intern.getInternId() + "' value=''>");
+                                        out.println("<input type='text' name='getMdS" + intern.getInternId() + "' value='' size='5'>");
 
                                 out.println("</td>");
                                 out.println("<td>");
                                 if (intern.getAdresse() != null)
-                                        out.println("<input type='text' name='getAdresse" + intern.getInternId() + "' value='" + intern.getAdresse() +  "'>");
+                                        out.println("<input type='text' name='getAdresse" + intern.getInternId() + "' value='" + intern.getAdresse() +  "' size='5'>");
                                 else
-                                        out.println("<input type='text' name='getAdresse" + intern.getInternId() + "' value=''>");
+                                        out.println("<input type='text' name='getAdresse" + intern.getInternId() + "' value='' size='5'>");
                                 out.println("</td>");
                                 out.println("<td>");
-                                if (intern.getNoteTechnique() != null)
-                                        out.println("<input type='number' name='getNoteTechnique" + intern.getInternId() + "' value='" + intern.getNoteTechnique() +  "'>");
+                                if (intern.getNoteTechnique() != null) {
+                                        if (intern.getNoteTechnique() != -9999)
+                                                out.println("<input type='number' name='getNoteTechnique" + intern.getInternId() + "' value='" + intern.getNoteTechnique() +  "'>");
+                                        else
+                                                out.println("<input type='number' name='getNoteTechnique" + intern.getInternId() + "' value=''>");
+
+                                }
                                 else
                                         out.println("<input type='number' name='getNoteTechnique" + intern.getInternId() + "' value=''>");
 
                                 out.println("</td>");
                                 out.println("<td>");
-                                if (intern.getNoteCommunication() != null)
-                                        out.println("<input type='number' name='getNoteCommunication" + intern.getInternId() + "' value='" + intern.getNoteCommunication() +  "'>");
+                                if (intern.getNoteCommunication() != null) {
+                                        if (intern.getNoteCommunication() != -9999)
+                                                out.println("<input type='number' name='getNoteCommunication" + intern.getInternId() + "' value='" + intern.getNoteCommunication() + "'>");
+                                        else
+                                                out.println("<input type='number' name='getNoteCommunication" + intern.getInternId() + "' value=''>");
+                                }
                                 else
                                         out.println("<input type='number' name='getNoteCommunication" + intern.getInternId() + "' value=''>");
 
                                 out.println("</td>");
                         out.println("</tr>");
-                        out.println("<tr>");
-                        out.println("</tr>");
+//                        out.println("<tr>");
+//                        out.println("</tr>");
                 }
                 out.println("<tr>");
+                out.println("</tr>");
+                out.println("<tr>");
                 out.println("<td>");
-                out.println("<input type='submit' name='AddFromUpdate' value='Add'>");
+                out.println("<input type='submit' name='ModifyFromUpdate' value='Modify'>");
                 out.println("</td>");
                 out.println("<td>");
                 out.println("<input type='submit' name='CancelFromUpdate' value='Cancel'>");
@@ -170,6 +181,8 @@
                 /*padding: 8px;*/
                 text-align: left;
                 border-bottom: 1px solid #ddd;
+                border-left: 1px solid #ddd;
+                border-right: 1px solid #ddd;
         }
 
         th {
@@ -180,7 +193,11 @@
         /*        width: 10%;*/
         /*}*/
 
-        /*input[type="checkbox"] {*/
-        /*        margin-right: 10px;*/
-        /*}*/
+        input[type="number"] {
+                width: 40px;
+        }
+
+        input[type="checkbox"] {
+                margin-right: 10px;
+        }
 </style>

@@ -28,3 +28,7 @@ a {
 .error {
     color: red;
 }
+
+.createAccountMessage {
+    color: green;
+}

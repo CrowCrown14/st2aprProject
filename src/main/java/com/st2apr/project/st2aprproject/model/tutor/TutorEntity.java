@@ -3,7 +3,7 @@ package com.st2apr.project.st2aprproject.model.tutor;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Tutor", schema = "st2aprProject", catalog = "")
+@Table(name = "`Tutor`", schema = "st2aprProject", catalog = "")
 public class TutorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

@@ -10,9 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Iterator;
@@ -84,10 +81,101 @@ public class ModifyInternServlet extends HttpServlet {
                     }
                 }
             }
+
+            //click button Add from excelIntern
+            if (request.getParameter("formAction").equals("Add")) {
+
+                InternEntity newIntern = new InternEntity();
+                newIntern.setTutorUsername((String) request.getSession().getAttribute("username"));
+                newIntern.setCdc(false);
+                newIntern.setFicheVisite(false);
+                newIntern.setFicheEvalEntreprise(false);
+                newIntern.setSondageWeb(false);
+                newIntern.setRapportRendu(false);
+                newIntern.setSoutenance(false);
+                newIntern.setPlanifier(false);
+                newIntern.setFaite(false);
+
+                Iterator<String> parameterNames = request.getParameterNames().asIterator();
+
+                while (parameterNames.hasNext()) {
+                    String parameterName = parameterNames.next();
+                    String parameterValue = request.getParameter(parameterName);
+
+                    switch (parameterName) {
+                        case "group":
+                            newIntern.setGroupe(parameterValue);
+                            break;
+                        case "nom":
+                            newIntern.setNom(parameterValue);
+                            break;
+                        case "prenom":
+                            newIntern.setPrenom(parameterValue);
+                            break;
+                        case "selectedCdc":
+                            newIntern.setCdc(true);
+                            break;
+                        case "selectedFicheVisite":
+                            newIntern.setFicheVisite(true);
+                            break;
+                        case "selectedFicheEvalEntreprise":
+                            newIntern.setFicheEvalEntreprise(true);
+                            break;
+                        case "selectedSondageWeb":
+                            newIntern.setSondageWeb(true);
+                            break;
+                        case "selectedRapportRendu":
+                            newIntern.setRapportRendu(true);
+                            break;
+                        case "selectedSoutenance":
+                            newIntern.setSoutenance(true);
+                            break;
+                        case "selectedPlanifier":
+                            newIntern.setPlanifier(true);
+                            break;
+                        case "selectedFaite":
+                            newIntern.setFaite(true);
+                            break;
+                        case "getDebut":
+                            if (!parameterValue.equals(""))
+                                newIntern.setDebut(Date.valueOf(parameterValue));
+                            break;
+                        case "getFin":
+                            if (!parameterValue.equals(""))
+                                newIntern.setFin(Date.valueOf(parameterValue));
+                            break;
+                        case "getEntreprise":
+                            newIntern.setEntreprise(parameterValue);
+                            break;
+                        case "getMdS":
+                            newIntern.setMdS(parameterValue);
+                            break;
+                        case "getAdresse":
+                            newIntern.setAdresse(parameterValue);
+                            break;
+                        case "getNoteTechnique":
+                            if (!parameterValue.equals(""))
+                                newIntern.setNoteTechnique(Integer.parseInt(parameterValue));
+                            else
+                                newIntern.setNoteTechnique(-9999);
+                            break;
+                        case "getNoteCommunication":
+                            if (!parameterValue.equals(""))
+                                newIntern.setNoteCommunication(Integer.parseInt(parameterValue));
+                            else
+                                newIntern.setNoteTechnique(-9999);
+                            break;
+                        default:
+//                                        System.out.println("Should not happen");
+                    }
+                }
+
+                isb.insertIntern(newIntern);
+            }
         }
-        if (request.getParameter("AddFromUpdate") != null) {
+        if (request.getParameter("ModifyFromUpdate") != null) {
             //click button Add from modifyAddIntern
-            if (request.getParameter("AddFromUpdate").equals("Add")) {
+            if (request.getParameter("ModifyFromUpdate").equals("Add")) {
 
                 Iterator<String> iterator = request.getParameterNames().asIterator();
 
@@ -105,7 +193,7 @@ public class ModifyInternServlet extends HttpServlet {
 
 //                    System.out.println(valueFromInformationFromForm);
 
-                    if (! informationFromForm.equals("AddFromUpdate")) {
+                    if (! informationFromForm.equals("ModifyFromUpdate")) {
 
                         for (int i = 0; i < informationFromForm.length(); i++) {
                             if (Character.isAlphabetic(informationFromForm.charAt(i))) {
@@ -218,7 +306,7 @@ public class ModifyInternServlet extends HttpServlet {
                 }
 
                 for (InternEntity intern : changedInterns) {
-                    isb.updateIntern(intern);
+                    isb.insertOrUpdateIntern(intern);
                 }
             }
 

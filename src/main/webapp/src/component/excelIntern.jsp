@@ -113,15 +113,22 @@
                     out.println(interns.get(i).getAdresse());
                 out.println("</td>");
                 out.println("<td>");
-                if (interns.get(i).getNoteTechnique() != null)
-                    out.println(interns.get(i).getNoteTechnique());
+                if (interns.get(i).getNoteTechnique() != null) {
+                    if (interns.get(i).getNoteTechnique() != -9999) {
+                        out.println(interns.get(i).getNoteTechnique());
+                    }
+                }
                 out.println("</td>");
                 out.println("<td>");
-                if (interns.get(i).getNoteCommunication() != null)
-                    out.println(interns.get(i).getNoteCommunication());
+                if (interns.get(i).getNoteCommunication() != null) {
+                    if (interns.get(i).getNoteCommunication() != -9999)
+                        out.println(interns.get(i).getNoteCommunication());
+                }
+
                 out.println("</td>");
             out.println("</tr>");
         }
+
         if (interns.size() > 0) {
             out.println("<tr>");
             out.println("<td>");
@@ -134,28 +141,125 @@
         }
         out.println("</tbody>");
         out.println("</form>");
+        out.println("<thead>");
+        out.println("<th> Select </th>");
+        out.println("<th> Gr </th>");
+        out.println("<th> NOM </th>");
+        out.println("<th> PRENOM </th>");
+        out.println("<th> CdC </th>");
+        out.println("<th> FICHE VISITE </th>");
+        out.println("<th> FICHE EVAL ENTR </th>");
+        out.println("<th> SONDAGE WEB </th>");
+        out.println("<th> RAPPORT RENDU </th>");
+        out.println("<th> SOUT </th>");
+        out.println("<th> PLANIF </th>");
+        out.println("<th> FAITE </th>");
+        out.println("<th> DEBUT </th>");
+        out.println("<th> FIN </th>");
+        out.println("<th> ENTR. </th>");
+        out.println("<th> MdS </th>");
+        out.println("<th> ADRESSE </th>");
+        out.println("<th> NOTE TECH </th>");
+        out.println("<th> NOTE COM </th>");
+        out.println("</thead>");
+        out.println("<form name='addForm' action='updateIntern' method='POST'>");
+        out.println("<tbody>");
+            out.println("<tr>");
+            out.println("<td>");
+            out.println("<input type='submit' class='addButton' name='formAction' value='Add'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='text' name='group' size='2' required>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='text' name='nom' size='5' required>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='text' name='prenom' size='5' required>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='cdc'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='ficheVisite'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='ficheEvalEntreprise'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='sondageWeb'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='rapportRendu'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='soutenance'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='planifier'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='checkbox' name='faite'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='date' name='getDebut'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='date' name='getFin'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='text' name='getEntreprise' size='5'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='text' name='getMdS' size='5'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='text' name='getAdresse' size='5'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='number' name='getNoteTechnique' size='5'>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input type='number' name='getNoteCommunication' size='5'>");
+            out.println("</td>");
+            out.println("</tr>");
+        out.println("<tbody>");
+        out.println("</form>");
         out.println("</table>");
 %>
 </div>
 
 <style>
+
+    <%@include file="/styles/style.css"%>
+
     table {
         border-collapse: collapse;
         width: 100%;
     }
 
     th, td {
-        padding: 8px;
+        /*padding: 8px;*/
         text-align: left;
         border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
     }
 
     th {
         background-color: #f2f2f2;
     }
 
-    thead th:first-child, tbody td:first-child {
-        width: 10%;
+    /*thead th:first-child, tbody td:first-child {*/
+    /*    width: 10%;*/
+    /*}*/
+
+    input[type="number"] {
+        width: 40px;
+    }
+
+    addButton{
+        width: 40px;
     }
 
     input[type="checkbox"] {
