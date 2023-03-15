@@ -85,7 +85,7 @@ public class InternSB {
 
     public void insertIntern(InternEntity internEntity) {
 
-        Query q = em.createNativeQuery("INSERT INTO `Intern`(groupe,nom,prenom,cdc,ficheVisite,ficheEvalEntreprise, sondageWeb, rapportRendu, soutenance, planifier, faite, debut, fin, entreprise,mdS, adresse, noteTechnique, noteCommunication VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)));
+        Query q = em.createNativeQuery("INSERT INTO `Intern`(groupe,nom,prenom,cdc,ficheVisite,ficheEvalEntreprise, sondageWeb, rapportRendu, soutenance, planifier, faite, debut, fin, entreprise,mdS, adresse, noteTechnique, noteCommunication) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")
                 .setParameter(1, internEntity.getGroupe())
                 .setParameter(2, internEntity.getNom())
                 .setParameter(3, internEntity.getPrenom())
