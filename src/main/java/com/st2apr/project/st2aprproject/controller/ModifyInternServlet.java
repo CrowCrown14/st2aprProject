@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
@@ -96,10 +97,10 @@ public class ModifyInternServlet extends HttpServlet {
                 newIntern.setPlanifier(false);
                 newIntern.setFaite(false);
 
-                Iterator<String> parameterNames = request.getParameterNames().asIterator();
+                Enumeration<String> parameterNames = request.getParameterNames();
 
-                while (parameterNames.hasNext()) {
-                    String parameterName = parameterNames.next();
+                while (parameterNames.hasMoreElements()) {
+                    String parameterName = parameterNames.nextElement();
                     String parameterValue = request.getParameter(parameterName);
 
                     switch (parameterName) {
@@ -177,17 +178,17 @@ public class ModifyInternServlet extends HttpServlet {
             //click button Add from modifyAddIntern
             if (request.getParameter("ModifyFromUpdate").equals("Modify")) {
 
-                Iterator<String> iterator = request.getParameterNames().asIterator();
+                Enumeration<String> iterator = request.getParameterNames();
 
                 ArrayList<InternEntity> changedInterns = new ArrayList<>();
 
-                while (iterator.hasNext()) {
+                while (iterator.hasMoreElements()) {
 
 
                     String selectedNamePart = "";
                     String internId = "";
 
-                    String informationFromForm = iterator.next();
+                    String informationFromForm = iterator.nextElement();
 
                     String valueFromInformationFromForm = request.getParameter(informationFromForm);
 
