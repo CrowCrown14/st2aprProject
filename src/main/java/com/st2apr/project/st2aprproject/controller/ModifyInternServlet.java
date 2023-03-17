@@ -44,7 +44,7 @@ public class ModifyInternServlet extends HttpServlet {
         if (request.getParameter("formAction") != null) {
 
             //click button Delete from excelIntern
-            if (request.getParameter("formAction").equals("Delete")) {
+                if (request.getParameter("formAction").equals("Delete")) {
 
                 String[] checkedInterns = request.getParameterValues("selectedInterns");
 
@@ -113,28 +113,28 @@ public class ModifyInternServlet extends HttpServlet {
                         case "prenom":
                             newIntern.setPrenom(parameterValue);
                             break;
-                        case "selectedCdc":
+                        case "cdc":
                             newIntern.setCdc(true);
                             break;
-                        case "selectedFicheVisite":
+                        case "ficheVisite":
                             newIntern.setFicheVisite(true);
                             break;
-                        case "selectedFicheEvalEntreprise":
+                        case "ficheEvalEntreprise":
                             newIntern.setFicheEvalEntreprise(true);
                             break;
-                        case "selectedSondageWeb":
+                        case "sondageWeb":
                             newIntern.setSondageWeb(true);
                             break;
-                        case "selectedRapportRendu":
+                        case "rapportRendu":
                             newIntern.setRapportRendu(true);
                             break;
-                        case "selectedSoutenance":
+                        case "soutenance":
                             newIntern.setSoutenance(true);
                             break;
-                        case "selectedPlanifier":
+                        case "planifier":
                             newIntern.setPlanifier(true);
                             break;
-                        case "selectedFaite":
+                        case "faite":
                             newIntern.setFaite(true);
                             break;
                         case "getDebut":
